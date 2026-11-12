@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>جرّب تطبيقاتنا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@700;800&family=Tajawal:wght@500;700&display=swap">
+<style>
+:root{--bg:#1c1838;--card:#2a2452;--ink:#fff7e8;--muted:#bdb4e6;--gold:#ffcd4d;--green:#3fd47a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Tajawal",system-ui,sans-serif;line-height:1.6}
+main{max-width:560px;margin:0 auto;padding:24px 16px 48px}
+h1{font-family:"Baloo Bhaijaan 2",sans-serif;font-size:36px;margin:0;color:var(--gold);line-height:1.1}
+.lead{color:var(--muted);margin:6px 0 18px;font-size:17px}
+.step{background:var(--card);border-radius:22px;padding:18px;margin-top:14px}
+.step h2{margin:0 0 6px;font-size:21px;display:flex;gap:10px;align-items:center}
+.num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--gold);color:#3a2a00;display:grid;place-items:center;font-weight:800}
+.step p{margin:0 0 10px;color:var(--muted)}
+a.btn{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:18px;padding:12px 16px;border-radius:16px;background:var(--green);color:#0e3a20;margin-top:8px}
+a.btn.alt{background:#3b335f;color:var(--ink)}
+.app{display:flex;gap:12px;align-items:center;margin-top:14px;background:#211c44;border-radius:18px;padding:12px}
+.app img{width:58px;height:58px;border-radius:14px;flex:none;background:#fff}
+.app .info{flex:1;min-width:0}
+.app b{display:block;font-size:19px}
+.app small{color:var(--muted)}
+.app .links{display:flex;flex-direction:column;gap:6px;flex:none;width:44%}
+.app .links a{margin:0;font-size:15px;padding:9px 8px}
+.note{margin-top:18px;background:#ff5a5f;color:#fff;border-radius:18px;padding:14px 16px;font-weight:700}
+</style>
+</head>
+<body>
+<main>
+  <h1>جرّب تطبيقاتنا 🎉</h1>
+  <p class="lead">شكراً إنك بتساعدنا! هيك بتنزّل التطبيقات قبل الكل وبتجربها.</p>
+
+  <div class="step">
+    <h2><span class="num">١</span>ادخل المجموعة</h2>
+    <p>سجّل دخول بحساب Gmail اللي على جوالك، واكبس "انضمام إلى المجموعة".</p>
+    <a class="btn" href="https://groups.google.com/g/karetate" target="_blank" rel="noopener">انضمام إلى المجموعة</a>
+  </div>
+
+  <div class="step">
+    <h2><span class="num">٢</span>صير مختبر وحمّل كل تطبيق</h2>
+    <p>لكل تطبيق: اكبس <b>"صير مختبر"</b> وبعدين <b>"أريد أن أصبح مختبِرًا"</b>. بعدها اكبس <b>"تحميل"</b> ونزّله من Google Play.</p>
+    <div id="apps"></div>
+  </div>
+
+  <div class="note">⚠️ مهم: افتح كل تطبيق والعب فيه أو استعمله كل يومين أو تلاتة، لمدة ١٤ يوم، ولا تمسحه ولا تطلع من المجموعة. شكراً كتير 💜</div>
+</main>
+<script>
+/* To add an app: add a line here. id = the Google Play package name. */
+const APPS = [
+  { id: 'com.boboland.kids', name: 'بوبو لاند', desc: 'ألعاب للأطفال', icon: 'bobo.png' },
+  { id: 'com.sahlapp.customer', name: 'سهل', desc: 'تاكسي، طعام، متجر وطرود', icon: '' },
+  { id: 'com.sahlapp.partner', name: 'سهل شريك', desc: 'للسائقين والمتاجر', icon: '' }
+];
+const box = document.getElementById('apps');
+APPS.forEach(a => {
+  const d = document.createElement('div'); d.className = 'app';
+  d.innerHTML = (a.icon ? '<img src="' + a.icon + '" alt="">' : '<img alt="" style="visibility:hidden">') +
+    '<div class="info"><b>' + a.name + '</b><small>' + a.desc + '</small></div>' +
+    '<div class="links"><a class="btn alt" target="_blank" rel="noopener" href="https://play.google.com/apps/testing/' + a.id + '">صير مختبر</a>' +
+    '<a class="btn" target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=' + a.id + '">تحميل</a></div>';
+  box.appendChild(d);
+});
+</script>
+</body>
+</html>
